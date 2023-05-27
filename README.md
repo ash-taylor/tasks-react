@@ -1,2 +1,3 @@
-# tasks-react
-A Simple task list built with React &amp; Chakra-UI
+# Tasks React
+
+A very simple web app built using React and Chakra UI.
