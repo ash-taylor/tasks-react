@@ -8,9 +8,30 @@ import TaskForm from './components/TaskForm';
 function App() {
   const [tasks, setTasks] = useState([]);
   const [inputText, setInputText] = useState('');
+  const [editInputText, setEditInputText] = useState('');
 
   function handleInput(e) {
     setInputText(e.target.value);
+  }
+
+  function handleEditInput(event) {
+    setEditInputText(event.target.value);
+  }
+
+  function handleEditSave(id) {
+    setTasks((prev) =>
+      prev.map((task) => {
+        if (task.id === id) {
+          return {
+            value: editInputText ? editInputText : task.value,
+            id: task.id,
+          };
+        } else {
+          return task;
+        }
+      })
+    );
+    setEditInputText('');
   }
 
   function handleSubmit(event) {
@@ -46,7 +67,13 @@ function App() {
           handleSubmit={handleSubmit}
         />
         {tasks.length > 0 && <Divider mt="2" />}
-        <Overview tasks={tasks} handleRemove={removeTask} />
+        <Overview
+          tasks={tasks}
+          handleRemove={removeTask}
+          handleEditInput={handleEditInput}
+          handleEditSave={handleEditSave}
+          editInputText={editInputText}
+        />
       </Box>
     </Flex>
   );

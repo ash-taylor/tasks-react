@@ -1,21 +1,23 @@
 import React from 'react';
-import { IconButton, List, ListItem } from '@chakra-ui/react';
-import { DeleteIcon } from '@chakra-ui/icons';
+import { List } from '@chakra-ui/react';
+import Task from './Task';
 
-export default function Overview({ tasks, handleRemove }) {
+export default function Overview({
+  tasks,
+  handleRemove,
+  handleEditInput,
+  editInputText,
+  handleEditSave,
+}) {
   const listElements = tasks.map((task) => (
-    <ListItem key={task.id}>
-      <IconButton
-        onClick={() => handleRemove(task.id)}
-        size="xs"
-        variant="outline"
-        colorScheme="blue"
-        aria-label="task complete"
-        icon={<DeleteIcon />}
-        mr="2"
-      />
-      {task.value}
-    </ListItem>
+    <Task
+      key={task.id}
+      task={task}
+      handleRemove={handleRemove}
+      handleInput={handleEditInput}
+      inputText={editInputText}
+      handleEditSave={handleEditSave}
+    />
   ));
 
   return (
