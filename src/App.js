@@ -14,26 +14,6 @@ function App() {
     setInputText(e.target.value);
   }
 
-  function handleEditInput(event) {
-    setEditInputText(event.target.value);
-  }
-
-  function handleEditSave(id) {
-    setTasks((prev) =>
-      prev.map((task) => {
-        if (task.id === id) {
-          return {
-            value: editInputText ? editInputText : task.value,
-            id: task.id,
-          };
-        } else {
-          return task;
-        }
-      })
-    );
-    setEditInputText('');
-  }
-
   function handleSubmit(event) {
     event.preventDefault();
     if (inputText) {
@@ -46,10 +26,6 @@ function App() {
       ]);
       setInputText('');
     }
-  }
-
-  function removeTask(id) {
-    setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
   }
 
   return (
@@ -69,10 +45,9 @@ function App() {
         {tasks.length > 0 && <Divider mt="2" />}
         <Overview
           tasks={tasks}
-          handleRemove={removeTask}
-          handleEditInput={handleEditInput}
-          handleEditSave={handleEditSave}
+          setTasks={setTasks}
           editInputText={editInputText}
+          setEditInputText={setEditInputText}
         />
       </Box>
     </Flex>

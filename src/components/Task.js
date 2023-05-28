@@ -8,17 +8,35 @@ import {
 } from '@chakra-ui/react';
 import { CheckIcon, DeleteIcon, EditIcon } from '@chakra-ui/icons';
 
-export default function Task({
-  task,
-  handleRemove,
-  handleInput,
-  inputText,
-  handleEditSave,
-}) {
+export default function Task({ task, setTasks, inputText, setEditInputText }) {
   const [taskEditable, setTaskEditable] = useState(false);
 
-  function handleEdit() {
+  function initEdit() {
+    setEditInputText(task.value);
     setTaskEditable(true);
+  }
+
+  function handleInput(event) {
+    setEditInputText(event.target.value);
+  }
+
+  function handleSave(id) {
+    setTasks((prev) =>
+      prev.map((task) => {
+        if (task.id === id) {
+          return {
+            value: inputText ? inputText : task.value,
+            id: task.id,
+          };
+        } else {
+          return task;
+        }
+      })
+    );
+  }
+
+  function handleRemove(id) {
+    setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
   }
 
   return (
@@ -34,7 +52,7 @@ export default function Task({
           mr="2"
         />
         <IconButton
-          onClick={handleEdit}
+          onClick={initEdit}
           size="xs"
           variant="solid"
           colorScheme="blue"
@@ -50,11 +68,11 @@ export default function Task({
               width="auto"
               size="xs"
               onChange={handleInput}
-              value={inputText ? inputText : task.value}
+              value={inputText}
             />
             <IconButton
               onClick={() => {
-                handleEditSave(task.id);
+                handleSave(task.id);
                 setTaskEditable(false);
               }}
               size="xs"

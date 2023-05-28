@@ -4,19 +4,17 @@ import Task from './Task';
 
 export default function Overview({
   tasks,
-  handleRemove,
-  handleEditInput,
+  setTasks,
   editInputText,
-  handleEditSave,
+  setEditInputText,
 }) {
   const listElements = tasks.map((task) => (
     <Task
       key={task.id}
       task={task}
-      handleRemove={handleRemove}
-      handleInput={handleEditInput}
+      setTasks={setTasks}
       inputText={editInputText}
-      handleEditSave={handleEditSave}
+      setEditInputText={setEditInputText}
     />
   ));
 
