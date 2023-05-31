@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/tasks-react/static/js/main.03d05fdf.js",
+    "main.js": "/tasks-react/static/js/main.c2ad78f7.js",
     "index.html": "/tasks-react/index.html",
-    "main.03d05fdf.js.map": "/tasks-react/static/js/main.03d05fdf.js.map"
+    "main.c2ad78f7.js.map": "/tasks-react/static/js/main.c2ad78f7.js.map"
   },
   "entrypoints": [
-    "static/js/main.03d05fdf.js"
+    "static/js/main.c2ad78f7.js"
   ]
 }
