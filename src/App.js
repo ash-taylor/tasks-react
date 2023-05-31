@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Box, Flex, Divider } from '@chakra-ui/react';
 import { nanoid } from 'nanoid';
+import Navbar from './components/Navbar';
 import Overview from './components/Overview';
-import Title from './components/Title';
 import TaskForm from './components/TaskForm';
 
 function App() {
@@ -29,28 +29,31 @@ function App() {
   }
 
   return (
-    <Flex
-      width={'100vw'}
-      height={'100vh'}
-      alignContent={'center'}
-      justifyContent={'center'}
-    >
-      <Box maxW={'2xl'} m={'0 auto'}>
-        <Title />
-        <TaskForm
-          handleInput={handleInput}
-          inputText={inputText}
-          handleSubmit={handleSubmit}
-        />
-        {tasks.length > 0 && <Divider mt="2" />}
-        <Overview
-          tasks={tasks}
-          setTasks={setTasks}
-          editInputText={editInputText}
-          setEditInputText={setEditInputText}
-        />
-      </Box>
-    </Flex>
+    <>
+      <Navbar />
+      <Flex
+        width={'100vw'}
+        height={'100vh'}
+        alignContent={'center'}
+        justifyContent={'center'}
+        mt="5"
+      >
+        <Box maxW={'2xl'} m={'0 auto'}>
+          <TaskForm
+            handleInput={handleInput}
+            inputText={inputText}
+            handleSubmit={handleSubmit}
+          />
+          {tasks.length > 0 && <Divider mt="2" />}
+          <Overview
+            tasks={tasks}
+            setTasks={setTasks}
+            editInputText={editInputText}
+            setEditInputText={setEditInputText}
+          />
+        </Box>
+      </Flex>
+    </>
   );
 }
 

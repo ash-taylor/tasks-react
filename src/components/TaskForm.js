@@ -1,5 +1,4 @@
 import { Button, Center, Input, Stack } from '@chakra-ui/react';
-import React from 'react';
 
 export default function TaskForm({ handleInput, inputText, handleSubmit }) {
   return (
