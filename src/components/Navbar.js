@@ -10,9 +10,9 @@ import {
 
 export default function Navbar() {
   return (
-    <Flex as="nav" p="10px" alignItems="flex-start" gap="10px" boxShadow="base">
+    <Flex as="nav" p="2" alignItems="flex-start" gap="4" boxShadow="base">
       <Heading as="h1">Task List</Heading>
-      <Text fontSize="xl" textAlign="center" mt="10px">
+      <Text fontSize="xl" mt="12px">
         A simple task list application
       </Text>
       <Spacer />
